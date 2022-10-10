@@ -81,6 +81,8 @@ main > section.hero {
   align-items: center;
   text-align: center;
   /* make this banner stick to the top! */
+  position: sticky;
+  top: 0
 }
 
 section.hero > .call-to-action {
@@ -107,6 +109,13 @@ main p {
   line-height: 1.75;
   margin-bottom: 48px;;
 }
+.first::first-letter {
+  float: left;
+  font-size: 5em;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0 .1em 0 0;
+  line-height: 0.85;
+}
 
 main > article img {
   float: left;
@@ -131,6 +140,7 @@ span.tooltip {
   color: var(--danger-color);
   position: relative;
   cursor: pointer;
+  display: inline-block;
 }
 
 /* underline span on hover/focus */
@@ -138,18 +148,63 @@ span.tooltip:hover,
 span.tooltip:focus {
   text-decoration: underline;
 }
+
 /* show tooltip on hover/focus */
 span.tooltip:hover > span,
 span.tooltip:focus > span {
   display: inline;
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: fit-content;
+  text-align: center;
+}
+
+span#second-tooltip:hover > span,
+span#second-tooltip:focus > span {
+  display: inline;
+  position: absolute;
+  top: -300x;
+  left: 5;
+  width: fit-content;
+  text-align: center;
+}
+
+span#third-tooltip:hover > span,
+span#third-tooltip:focus > span {
+  display: inline;
+  position: absolute;
+  top: -300px;
+  left: 0;
+  text-align: center;
 }
 
 /* styling for tooltip bubble */
 span.tooltip span {
   display: none;
+  float: left;
+  z-index: 1;
+  background-color: #000;
+  color: #eee;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 6dpx;
+
 }
+
+span.tooltip span {
+  visibility: visible;
+}
+
 
 /* styling for tooltip bubble arrow */
 span.tooltip span::after {
   content: "";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
 }
